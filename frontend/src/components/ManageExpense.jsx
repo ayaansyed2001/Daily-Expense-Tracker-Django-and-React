@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import React,{useState,useEffect} from 'react'
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +19,7 @@ const ManageExpense = () => {
         }    
     const handleSaveChanges = async () => {
         try{
-            const response = await fetch(`http://127.0.0.1:8000/api/update_expense/${editExpense.id}/`, {
+            const response = await fetch(`${API_URL}/api/update_expense/${editExpense.id}/`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -43,7 +44,7 @@ const ManageExpense = () => {
 const handleDelete = async (expenseId) => {
     if(window.confirm("Are you sure you want to delete this expense?")){
         try{
-            const response = await fetch(`http://127.0.0.1:8000/api/delete_expense/${expenseId}/`, {
+            const response = await fetch(`${API_URL}/api/delete_expense/${expenseId}/`, {
                 method: "DELETE",
             });
             if(response.status === 200){
@@ -63,7 +64,7 @@ const handleDelete = async (expenseId) => {
     const userId = localStorage.getItem('user_id');
      const fetchExpenses = async (userId) => {
             try{
-                const response = await fetch(`http://127.0.0.1:8000/api/manage_expense/${userId}`)
+                const response = await fetch(`${API_URL}/api/manage_expense/${userId}`)
                 const data = await response.json();
                 setExpenses(data);
 

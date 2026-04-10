@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect , useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {Pie} from 'react-chartjs-2'
+import API_URL from "../api";
 import { Chart,ArcElement,Tooltip,Legend} from "chart.js"; //npm install chart.js react-chartjs-2 isse chart aata ha iisko install krna padta hai 
 
 
@@ -56,7 +57,7 @@ const Dashboard = () => {
 
        const fetchExpenses = async (userId) => {
               try{
-                  const response = await fetch(`http://127.0.0.1:8000/api/manage_expense/${userId}`)
+                  const response = await fetch(fetch(`${API_URL}/api/manage_expense/${userId}`))
                   const data = await response.json();
                   setExpense(data);
                   calculateTotals(data);
