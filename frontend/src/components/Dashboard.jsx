@@ -57,7 +57,7 @@ const Dashboard = () => {
 
        const fetchExpenses = async (userId) => {
               try{
-                  const response = await fetch(fetch(`${API_URL}/api/manage_expense/${userId}`))
+                  const response = await fetch(`${API_URL}/api/manage_expense/${userId}`)
                   const data = await response.json();
                   setExpense(data);
                   calculateTotals(data);
