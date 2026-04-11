@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+
+
+
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -94,26 +97,44 @@ def delete_expense(request, expense_id):
         
         
         
+
+
 @csrf_exempt
 def search_expense(request, user_id):
-    if request.method == 'GET':
+    try:
         from_date = request.GET.get('from')
         to_date = request.GET.get('to')
-        #convert string to date
+
+        if not from_date or not to_date:
+            return JsonResponse({'error': 'Missing dates'}, status=400)
+
+        # convert safely
         from_date = datetime.strptime(from_date, "%Y-%m-%d").date()
         to_date = datetime.strptime(to_date, "%Y-%m-%d").date()
-        expenses = ExpenseDetail.objects.filter(UserId=user_id,ExpenseDate__range=(from_date, to_date))
-        expense_list = [
-    {
-        "ExpenseDate": exp.ExpenseDate.strftime("%Y-%m-%d"),
-        "ExpenseItem": exp.ExpenseItem,
-        "ExpenseCost": exp.ExpenseCost,
-    }
-    for exp in expenses
-]
-        agg = expenses.aggregate(Sum('ExpenseCost'))  #{'ExpenseCost__sum': 1500}
-        total=agg['ExpenseCost__sum'] or 0
-        return JsonResponse({'expenses': expense_list,'total': total})
+
+        expenses = ExpenseDetail.objects.filter(
+            UserId=user_id,
+            ExpenseDate__range=(from_date, to_date)
+        )
+
+        expense_list = []
+        for exp in expenses:
+            expense_list.append({
+                "ExpenseDate": exp.ExpenseDate.strftime("%Y-%m-%d"),
+                "ExpenseItem": exp.ExpenseItem,
+                "ExpenseCost": float(exp.ExpenseCost),  # IMPORTANT
+            })
+
+        total = sum(float(exp["ExpenseCost"]) for exp in expense_list)
+
+        return JsonResponse({
+            "expenses": expense_list,
+            "total": total
+        })
+
+    except Exception as e:
+        print("ERROR:", str(e))  # will show in Render logs
+        return JsonResponse({"error": str(e)}, status=500)
     
 @csrf_exempt
 def change_password(request, user_id):
