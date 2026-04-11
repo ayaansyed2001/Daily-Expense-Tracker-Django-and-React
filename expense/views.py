@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import UserDetail, ExpenseDetail
@@ -98,6 +99,9 @@ def search_expense(request, user_id):
     if request.method == 'GET':
         from_date = request.GET.get('from')
         to_date = request.GET.get('to')
+        #convert string to date
+        from_date = datetime.strptime(from_date, "%Y-%m-%d").date()
+        to_date = datetime.strptime(to_date, "%Y-%m-%d").date()
         expenses = ExpenseDetail.objects.filter(UserId=user_id,ExpenseDate__range=[from_date, to_date])
         expense_list = list(expenses.values())
         agg = expenses.aggregate(Sum('ExpenseCost'))  #{'ExpenseCost__sum': 1500}
