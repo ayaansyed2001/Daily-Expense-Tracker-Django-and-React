@@ -86,20 +86,21 @@ const handleDelete = async (expenseId) => {
         },[]);
        
   return (
-    <div className='container mt-5'>
-            <div className="text-center mb-4">
+    <div className='app-page'>
+            <div className="page-heading">
+                <span className="page-kicker">Your records</span>
                 <h2><i className="fas fa-tasks me-2"></i>Manage Expense</h2>
-                <p className='text-muted'>View, edit, and delete your expenses</p>
+                <p>View, edit, and delete your expenses</p>
                 </div>
-                <div>
+                <div className="table-panel">
 
-                    <table className='table table-striped table-bordered'>
-                        <thead className='table-dark text-center'>
+                    <table className='table app-table'>
+                        <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Date</th>
                                 <th>Item</th>
-                                <th>Cost (₹)</th>
+                                <th>Cost (Rs)</th>
                                 <th>Action</th>   
                             </tr>
                             </thead>
@@ -112,8 +113,8 @@ const handleDelete = async (expenseId) => {
                                     <td>{exp.ExpenseItem}</td>
                                     <td>{exp.ExpenseCost}</td>
                                     <td>
-                                        <button type="button" className='btn btn-sm btn-info me-2' onClick={() => handleEdit(exp)}><i className='fas fa-edit' ></i></button>
-                                        <button type="button" className='btn btn-sm btn-danger' onClick={() => handleDelete(exp.id)}><i className='fas fa-trash' ></i></button>
+                                        <button type="button" className='btn table-action edit me-2' onClick={() => handleEdit(exp)}><i className='fas fa-edit' ></i></button>
+                                        <button type="button" className='btn table-action delete' onClick={() => handleDelete(exp.id)}><i className='fas fa-trash' ></i></button>
                                         </td>   
                                 </tr>
 
@@ -138,7 +139,7 @@ const handleDelete = async (expenseId) => {
     <div className="modal show d-block" style={{background : 'rgba(0,0,0,0.5)'}} >
   <div className="modal-dialog" >
     <div className="modal-content">
-      <div className="modal-header bg-primary text-white">
+      <div className="modal-header modal-topbar">
         <h5 className="modal-title"><i className="fas fa-pen me-2"></i>Edit Expense</h5>
         <button type="button" className="btn-close" onClick={() => setEditExpense(null)} aria-label="Close">
         
@@ -170,8 +171,8 @@ const handleDelete = async (expenseId) => {
                         </div>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Expense Cost (₹)</label>
-                        <div>
+                        <label className='form-label'>Expense Cost (Rs)</label>
+                        <div className='input-group'>
                              <span className='input-group-text'>
                                 <i className="fas fa-rupee-sign"></i>
                             </span>
@@ -187,8 +188,8 @@ const handleDelete = async (expenseId) => {
 
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-primary" onClick={handleSaveChanges}>Save changes</button>
-        <button type="button" className="btn btn-secondary" onClick={() => setEditExpense(null)}>Close</button>
+        <button type="button" className="btn app-btn" onClick={handleSaveChanges}>Save changes</button>
+        <button type="button" className="btn outline-btn" onClick={() => setEditExpense(null)}>Close</button>
       </div>
     </div>
   </div>

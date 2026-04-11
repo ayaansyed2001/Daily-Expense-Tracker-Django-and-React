@@ -123,99 +123,94 @@ const Dashboard = () => {
     }
 
   return (
-    <div className="container mt-4">
-      <div className="text-center">
+    <div className="app-page">
+      <div className="dashboard-hero">
+        <span className="page-kicker">Overview</span>
         <h2>Welcome, {userName}!</h2>
-        <p className="lead">Here's your dashboard overview.</p>
+        <p>Here's your dashboard overview.</p>
       </div>
       <div className="row g-4">
         <div className="col-md-4">
           <div
-            className="card mb-3 bg-primary text-white text-center"
-            style={{ height: "150px" }}
+            className="stat-card stat-card-blue"
           >
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-calender-day me-2"></i>Today's Expenses
+            <div>
+              <h5>
+                <i className="fas fa-calendar-day me-2"></i>Today's Expenses
               </h5>
 
-              <p className="card-text">₹{todayTotal}</p>
+              <p>Rs {todayTotal}</p>
             </div>
           </div>
         </div>
          <div className="col-md-4">
           <div
-            className="card bg-success text-white text-center mb-3"
-            style={{ height: "150px" }}
+            className="stat-card stat-card-green"
           >
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-calender-day me-2"></i>Yesterday's Expenses
+            <div>
+              <h5>
+                <i className="fas fa-calendar-day me-2"></i>Yesterday's Expenses
               </h5>
 
-              <p className="card-text">₹{yesterdayTotal}</p>
+              <p>Rs {yesterdayTotal}</p>
             </div>
           </div>
         </div>
          <div className="col-md-4">
           <div
-            className="card bg-danger text-white text-center mb-3"
-            style={{ height: "150px" }}
+            className="stat-card stat-card-coral"
           >
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-calender-day me-2"></i>week Expenses
+            <div>
+              <h5>
+                <i className="fas fa-calendar-week me-2"></i>Week Expenses
               </h5>
 
-              <p className="card-text">₹{weekTotal}</p>
+              <p>Rs {weekTotal}</p>
             </div>
           </div>
         </div>
          <div className="col-md-4">
           <div
-            className="card bg-success text-white text-center mb-3"
-            style={{ height: "150px" }}
+            className="stat-card stat-card-green"
           >
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-calender-day me-2"></i>month Expenses
+            <div>
+              <h5>
+                <i className="fas fa-calendar-alt me-2"></i>Month Expenses
               </h5>
 
-              <p className="card-text">₹{monthTotal}</p>
+              <p>Rs {monthTotal}</p>
             </div>
           </div>
         </div>
          <div className="col-md-4">
           <div
-            className="card bg-danger text-white text-center mb-3"
-            style={{ height: "150px" }}
+            className="stat-card stat-card-coral"
           >
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-calender-day me-2"></i>year Expenses
+            <div>
+              <h5>
+                <i className="fas fa-calendar me-2"></i>Year Expenses
               </h5>
 
-              <p className="card-text">₹{yearTotal}</p>
+              <p>Rs {yearTotal}</p>
             </div>
           </div>
         </div>
          <div className="col-md-4">
           <div
-            className="card bg-warning text-white text-center mb-3"
-            style={{ height: "150px" }}
+            className="stat-card stat-card-gold"
           >
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-calender-day me-2"></i>Grand Total
+            <div>
+              <h5>
+                <i className="fas fa-wallet me-2"></i>Grand Total
               </h5>
 
-              <p className="card-text">₹{grandTotal}</p>
+              <p>Rs {grandTotal}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="my-5" style={{width:'400px', height:'400px', marginLeft:'auto', marginRight:'auto'}}>
+      <div className="chart-panel my-5">
 
         <h4 className="text-center">Expense Distribution</h4>
         <Pie data={pieData} />

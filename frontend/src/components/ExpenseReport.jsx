@@ -35,20 +35,21 @@ const ExpenseReport = () => {
     }
   };
   return (
-    <div className="container mt-5">
-      <div className="text-center mb-4">
+    <div className="app-page">
+      <div className="page-heading">
+        <span className="page-kicker">Analyze</span>
         <h2>
           <i className="fas fa-file-invoice-dollar me-2"></i>Expense Report
         </h2>
-        <p className="text-muted">Search and Analyze your expenses</p>
+        <p>Search and Analyze your expenses</p>
       </div>
 
       <form
-        className="row"
-        style={{ maxWidth: "400px" }}
+        className="report-filter"
         onSubmit={handleSubmit}
       >
-        <div className="col-md-4">
+        <div>
+          <label className="form-label">From date</label>
           <div className="input-group">
             <span className="input-group-text">
               <i className="fas fa-calendar-alt"></i>
@@ -64,7 +65,9 @@ const ExpenseReport = () => {
             />
           </div>
         </div>
-        <div className="input-group">
+        <div>
+          <label className="form-label">To date</label>
+          <div className="input-group">
             <span className="input-group-text">
               <i className="fas fa-calendar-alt"></i>
             </span>
@@ -78,21 +81,22 @@ const ExpenseReport = () => {
               value={toDate}
             />
           </div>
+          </div>
 
-        <div className="col-md-4">
-          <button type="submit" className="btn btn-primary w-100">
+        <div className="report-filter-action">
+          <button type="submit" className="btn app-btn w-100">
           <i className="fas fa-search me-2"></i>Search
         </button>
         </div>
       </form>
-<div className="mt-5">
-      <table className='table table-striped table-bordered'>
-                        <thead className='table-dark text-center'>
+<div className="table-panel mt-5">
+      <table className='table app-table'>
+                        <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Date</th>
                                 <th>Item</th>
-                                <th>Cost (₹)</th>
+                                <th>Cost (Rs)</th>
                                   
                             </tr>
                             </thead>

@@ -75,13 +75,14 @@ const ChangePassword = () => {
         }
 
   return (
-    <div className='container mt-5'>
-            <div className="text-center mb-4">
+    <div className='app-page'>
+            <div className="page-heading">
+                <span className="page-kicker">Account safety</span>
                 <h2><i className="fas fa-key me-2"></i>Change Password</h2>
-                <p className='text-muted'>Secure your account with a new password</p>
+                <p>Secure your account with a new password</p>
                 </div>
     
-                <form className='p-4 border rounded mx-auto' style={{maxWidth:"400px"}} 
+                <form className='app-form-card mx-auto' style={{maxWidth:"460px"}} 
                 onSubmit={handleSubmit}>
                     <div className='mb-3'>
                         <label className='form-label'>Old Password</label>
@@ -109,7 +110,7 @@ const ChangePassword = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Confirm New Password</label>
-                        <div>
+                        <div className='input-group'>
                              <span className='input-group-text'>
                                 <i className="fas fa-lock-open"></i>
                             </span>
@@ -123,7 +124,7 @@ const ChangePassword = () => {
                         
                     </div>
 
-                    <button type="submit" className="btn btn-primary w-100"><i className="fas fa-key me-2"></i>Change Password</button>
+                    <button type="submit" className="btn app-btn w-100"><i className="fas fa-key me-2"></i>Change Password</button>
                     
                 </form>
                 <ToastContainer position="top-center" />

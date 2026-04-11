@@ -47,16 +47,38 @@ const Login = () => {
             }
         }
   return (
-    <div className='container mt-5'>
-            <div className="text-center mb-4">
-                <h2><i className="fas fa-user-plus me-2"></i>Login</h2>
-                <p className='text-muted'>Access your account to start tracking expenses</p>
+    <div className='login-page'>
+        <div className='login-shell'>
+            <div className='login-info'>
+                <div className='login-badge'>
+                    <i className="fas fa-wallet me-2"></i>
+                    Expense Tracker
                 </div>
+                <h1>Welcome back</h1>
+                <p>Track today, plan tomorrow, and keep every rupee in sight.</p>
+                <div className='login-stats'>
+                    <div>
+                        <strong>Daily</strong>
+                        <span>spending view</span>
+                    </div>
+                    <div>
+                        <strong>Fast</strong>
+                        <span>expense entry</span>
+                    </div>
+                </div>
+            </div>
     
-                <form className='p-4 border rounded mx-auto' style={{maxWidth:"400px"}} 
+            <form className='login-card' 
                 onSubmit={handleSubmit}>
+                    <div className="text-center mb-4">
+                        <div className='login-icon'>
+                            <i className="fas fa-user"></i>
+                        </div>
+                        <h2>Login</h2>
+                        <p>Access your account to start tracking expenses</p>
+                    </div>
                     <div className='mb-3'> 
-                        <label className='form-label'>Email</label>
+                        <label className='form-label'>Email address</label>
                         <div className='input-group'>
                              <span className='input-group-text'>
                                 <i className="fas fa-envelope"></i>
@@ -68,13 +90,13 @@ const Login = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Password</label>
-                        <div>
+                        <div className='input-group'>
                              <span className='input-group-text'>
                                 <i className="fas fa-lock"></i>
                             </span>
     
     
-                            <input type="password" name="Password" className="form-control" required placeholder='create pasword' 
+                            <input type="password" name="Password" className="form-control" required placeholder='Enter Password....' 
                             value={formData.Password}
                             onChange={handleChange} />
     
@@ -82,9 +104,10 @@ const Login = () => {
                         
                     </div>
 
-                    <button type="submit" className="btn btn-primary w-100"><i className="fas fa-sign-in-alt me-2"></i>Login</button>
+                    <button type="submit" className="btn login-btn w-100"><i className="fas fa-sign-in-alt me-2"></i>Login</button>
                     
                 </form>
+            </div>
                 <ToastContainer position="top-center" />
         </div>
   )

@@ -59,13 +59,14 @@ const AddExpense = () => {
             }
         }
   return (
-     <div className='container mt-5'>
-            <div className="text-center mb-4">
+     <div className='app-page'>
+            <div className="page-heading">
+                <span className="page-kicker">New entry</span>
                 <h2><i className="fas fa-plus-circle me-2"></i>Add Expense</h2>
-                <p className='text-muted'>Add a new expense to your tracker</p>
+                <p>Add a new expense to your tracker</p>
                 </div>
     
-                <form className='p-4 border rounded mx-auto' style={{maxWidth:"400px"}} 
+                <form className='app-form-card mx-auto' style={{maxWidth:"460px"}} 
                 onSubmit={handleSubmit}>
                     <div className='mb-3'>
                         <label className='form-label'>Expense Date</label>
@@ -92,8 +93,8 @@ const AddExpense = () => {
                         </div>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Expense Cost (₹)</label>
-                        <div>
+                        <label className='form-label'>Expense Cost (Rs)</label>
+                        <div className='input-group'>
                              <span className='input-group-text'>
                                 <i className="fas fa-rupee-sign"></i>
                             </span>
@@ -107,7 +108,7 @@ const AddExpense = () => {
                         
                     </div>
 
-                    <button type="submit" className="btn btn-primary w-100"><i className="fas fa-plus me-2"></i>Add Expense</button>
+                    <button type="submit" className="btn app-btn w-100"><i className="fas fa-plus me-2"></i>Add Expense</button>
                     
                 </form>
                 <ToastContainer position="top-center" />

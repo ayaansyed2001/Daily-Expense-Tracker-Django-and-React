@@ -48,13 +48,14 @@ const Signup = () => {
         }
     }
   return (
-    <div className='container mt-5'>
-        <div className="text-center mb-4">
+    <div className='app-page'>
+        <div className="page-heading">
+            <span className="page-kicker">Start fresh</span>
             <h2><i className="fas fa-user-plus me-2"></i>Sign Up</h2>
-            <p className='text-muted'>Create your account to start tracking expenses</p>
+            <p>Create your account to start tracking expenses</p>
             </div>
 
-            <form className='p-4 border rounded mx-auto' style={{maxWidth:"400px"}} 
+            <form className='app-form-card mx-auto' style={{maxWidth:"430px"}} 
             onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label className='form-label'>Full Name</label>
@@ -82,7 +83,7 @@ const Signup = () => {
                 </div>
                 <div className='mb-3'>
                     <label className='form-label'>Password</label>
-                    <div>
+                    <div className='input-group'>
                          <span className='input-group-text'>
                             <i className="fas fa-lock"></i>
                         </span>
@@ -96,7 +97,7 @@ const Signup = () => {
                     
                 </div>
 
-                <button type="submit" className="btn btn-primary w-100"><i className="fas fa-user-plus me-2"></i>Sign Up</button>
+                <button type="submit" className="btn app-btn w-100"><i className="fas fa-user-plus me-2"></i>Sign Up</button>
                 
             </form>
             <ToastContainer position="top-center" />

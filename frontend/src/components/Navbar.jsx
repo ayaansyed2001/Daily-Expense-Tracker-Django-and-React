@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Navigate } from 'react-router-dom' ;
+import { Link } from 'react-router-dom' ;
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -12,9 +12,9 @@ const Navbar = () => {
     };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <nav className="navbar navbar-expand-lg navbar-dark app-navbar">
         <div className='container'>
-  <Link className="navbar-brand" to="#"><i className="fas fa-wallet me-2"></i>Expense Tracker</Link>
+  <Link className="navbar-brand app-brand" to="/"><i className="fas fa-wallet me-2"></i>Expense Tracker</Link>
   <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -44,7 +44,7 @@ const Navbar = () => {
             <li className="nav-item">
         <Link className="nav-link" to="/changepassword"> <i className="fas fa-key me-2"></i>Change Password</Link>
       </li>
-       <button className="btn btn-danger ms-3 btn-sm" onClick={handleLogout}>
+       <button className="btn logout-btn ms-lg-3 mt-2 mt-lg-0" onClick={handleLogout}>
         <i className="fas fa-sign-out-alt me-2"></i>LogOut
 
       </button>
