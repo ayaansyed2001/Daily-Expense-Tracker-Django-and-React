@@ -103,7 +103,14 @@ def search_expense(request, user_id):
         from_date = datetime.strptime(from_date, "%Y-%m-%d").date()
         to_date = datetime.strptime(to_date, "%Y-%m-%d").date()
         expenses = ExpenseDetail.objects.filter(UserId=user_id,ExpenseDate__range=(from_date, to_date))
-        expense_list = list(expenses.values())
+        expense_list = [
+    {
+        "ExpenseDate": exp.ExpenseDate.strftime("%Y-%m-%d"),
+        "ExpenseItem": exp.ExpenseItem,
+        "ExpenseCost": exp.ExpenseCost,
+    }
+    for exp in expenses
+]
         agg = expenses.aggregate(Sum('ExpenseCost'))  #{'ExpenseCost__sum': 1500}
         total=agg['ExpenseCost__sum'] or 0
         return JsonResponse({'expenses': expense_list,'total': total})
